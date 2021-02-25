@@ -312,47 +312,38 @@ def call(Map paramsMap) {
           - mountPath: /var/pgp-private-keys
             name: pgp-private-keys
           ${PLATFORM_MOUNTS}
-          ${TLS_MOUNTS}
         - name: ${WORKFLOW_WORKER_NAME_PACKAGE}
           image: "${params.workflowWorkerImagePackage}"
           imagePullPolicy: "${params.workflowWorkersImagePullPolicy}"
           tty: true
-          command: ['sh', '-c', 'update-ca-trust && cat']
           volumeMounts:
           - mountPath: ${WORKFLOW_WORKER_WORKSPACE_HOME_PATH}
             name: home-ploigos
           ${PLATFORM_MOUNTS}
-          ${TLS_MOUNTS}
         - name: ${WORKFLOW_WORKER_NAME_PUSH_ARTIFACTS}
           image: "${params.workflowWorkerImagePushArtifacts}"
           imagePullPolicy: "${params.workflowWorkersImagePullPolicy}"
           tty: true
-          command: ['sh', '-c', 'update-ca-trust && cat']
           volumeMounts:
           - mountPath: ${WORKFLOW_WORKER_WORKSPACE_HOME_PATH}
             name: home-ploigos
           ${PLATFORM_MOUNTS}
-          ${TLS_MOUNTS}
         - name: ${WORKFLOW_WORKER_NAME_CONTAINER_OPERATIONS}
           image: "${params.workflowWorkerImageContainerOperations}"
           imagePullPolicy: "${params.workflowWorkersImagePullPolicy}"
           tty: true
-          command: ['sh', '-c', 'update-ca-trust && cat']
           volumeMounts:
           - mountPath: ${WORKFLOW_WORKER_WORKSPACE_HOME_PATH}
             name: home-ploigos
           ${PLATFORM_MOUNTS}
-          ${TLS_MOUNTS}
         - name: ${WORKFLOW_WORKER_NAME_DEPLOY}
           image: "${params.workflowWorkerImageDeploy}"
           imagePullPolicy: "${params.workflowWorkersImagePullPolicy}"
           tty: true
-          command: ['sh', '-c', 'update-ca-trust && cat']
           volumeMounts:
           - mountPath: ${WORKFLOW_WORKER_WORKSPACE_HOME_PATH}
             name: home-ploigos
           ${PLATFORM_MOUNTS}
-          ${TLS_MOUNTS}
         volumes:
         - name: home-ploigos
           emptyDir: {}
